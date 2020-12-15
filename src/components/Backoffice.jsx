@@ -1,4 +1,4 @@
-import Axios from "axios";
+import axios from "axios";
 import React, { useState } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 
@@ -15,6 +15,7 @@ function Backoffice() {
   };
   const [newArticle, setNewArticle] = useState(newData);
   const [newImage, setNewImage] = useState("");
+  const [deleteId, setDeleteId] = useState("");
 
   const imageChange = (e) => {
     setNewImage(e.target.files[0]);
@@ -25,7 +26,7 @@ function Backoffice() {
     e.preventDefault();
     const bodyFormData = new FormData();
     bodyFormData.append("upload", newImage);
-    Axios({
+    axios({
       method: "post",
       url: "http://localhost:4000/upload",
       data: bodyFormData,
@@ -35,14 +36,26 @@ function Backoffice() {
       .catch((err) => console.log(err));
   };
 
+  const idChange = (e) => {
+    setDeleteId(e.target.value);
+  };
+
+  const deleteSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:4000/admin/${deleteId}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+
   const newArticleChange = (e) => {
     setNewArticle({ ...newArticle, [e.target.id]: e.target.value });
   };
 
   const newArticleSubmit = (e) => {
-    console.log(newArticle);
     e.preventDefault();
-    Axios.post("http://localhost:4000/admin", newArticle)
+    axios
+      .post("http://localhost:4000/admin", newArticle)
       .then((response) => response.data)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
@@ -72,6 +85,22 @@ function Backoffice() {
               />
             </Form.Group>
             <Button variant="primary" type="submit" onClick={imageSubmit}>
+              Envoyer
+            </Button>
+          </Form>
+          <h4>Supprimer un article</h4>
+          <Form>
+            <Form.Group>
+              <Form.Label>ID</Form.Label>
+              <Form.Control
+                id="id"
+                type="text"
+                placeholder="id"
+                value={deleteId}
+                onChange={idChange}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" onClick={deleteSubmit}>
               Envoyer
             </Button>
           </Form>
