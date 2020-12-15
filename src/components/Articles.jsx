@@ -14,10 +14,6 @@ function Articles() {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    console.log(articles);
-  }, [articles]);
-
   return (
     <Container fluid as="main">
       <Row className="justify-content-center">

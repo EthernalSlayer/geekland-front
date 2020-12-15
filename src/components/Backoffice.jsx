@@ -22,7 +22,6 @@ function Backoffice() {
   };
 
   const imageSubmit = (e) => {
-    console.log(newImage);
     e.preventDefault();
     const bodyFormData = new FormData();
     bodyFormData.append("upload", newImage);
@@ -42,8 +41,11 @@ function Backoffice() {
 
   const deleteSubmit = (e) => {
     e.preventDefault();
-    axios
-      .delete(`http://localhost:4000/admin/${deleteId}`)
+    axios({
+      method: "delete",
+      url: `http://localhost:4000/admin/${deleteId}`,
+      headers: { Authorization: localStorage.getItem("access_token") },
+    })
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   };
@@ -54,8 +56,12 @@ function Backoffice() {
 
   const newArticleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/admin", newArticle)
+    axios({
+      method: "post",
+      url: "http://localhost:4000/admin",
+      data: newArticle,
+      headers: { Authorization: localStorage.getItem("access_token") },
+    })
       .then((response) => response.data)
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
