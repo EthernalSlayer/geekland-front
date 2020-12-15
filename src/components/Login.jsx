@@ -40,11 +40,11 @@ function Login(props) {
     >
       <Row className="justify-content-center">
         <Col className="text-light text-center">
-          <h1>Login</h1>
+          <h1 style={{ margin: "10px" }}>Login</h1>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Form>
+        <Form style={{ margin: "20px" }}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label className="text-light">Pseudo</Form.Label>
             <Form.Control
@@ -65,7 +65,7 @@ function Login(props) {
             />
           </Form.Group>
           <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Submit
+            Se connecter
           </Button>
         </Form>
       </Row>
