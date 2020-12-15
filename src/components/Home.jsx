@@ -3,13 +3,21 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 
 function Home() {
   return (
-    <Container fluid as="main" style={{ minHeight: "85vh" }}>
+    <Container
+      className="bg-secondary"
+      fluid
+      as="main"
+      style={{ minHeight: "85vh" }}
+    >
       <Row
         className="justify-content-center align-items-center"
         style={{ minHeight: "85vh" }}
       >
         <Col md="10" xs="12">
-          <Card className="bg-dark text-white">
+          <Card
+            className="bg-dark text-white"
+            style={{ boxShadow: "0 0 5px 4px rgba(0, 0, 0, 0.5)" }}
+          >
             <Card.Body className="text-center">
               <Card.Title>Welcome</Card.Title>
               <Card.Text>

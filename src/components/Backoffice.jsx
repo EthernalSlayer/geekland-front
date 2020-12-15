@@ -31,7 +31,7 @@ function Backoffice() {
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
     })
-      .then((response) => console.log(response))
+      .then((response) => setNewImage(""))
       .catch((err) => console.log(err));
   };
 
@@ -46,7 +46,7 @@ function Backoffice() {
       url: `http://localhost:4000/admin/${deleteId}`,
       headers: { Authorization: localStorage.getItem("access_token") },
     })
-      .then((response) => console.log(response))
+      .then((response) => setDeleteId(""))
       .catch((err) => console.log(err));
   };
 
@@ -63,7 +63,7 @@ function Backoffice() {
       headers: { Authorization: localStorage.getItem("access_token") },
     })
       .then((response) => response.data)
-      .then((data) => console.log(data))
+      .then((data) => setNewArticle(newData))
       .catch((err) => console.log(err));
   };
 
@@ -76,13 +76,13 @@ function Backoffice() {
     >
       <Row className="justify-content-center">
         <Col className="text-light text-center">
-          <h1>Back Office</h1>
+          <h1 style={{ margin: "10px" }}>Back Office</h1>
         </Col>
       </Row>
       <Row className="justify-content-center">
         <Col md="4" xs="12" className="text-light">
-          <h4>Importer une image</h4>
-          <Form>
+          <h4 style={{ margin: "10px" }}>Importer une image</h4>
+          <Form style={{ margin: "20px 0 20px 0" }}>
             <Form.Group>
               <Form.File
                 id="exampleFormControlFile1"
@@ -94,8 +94,8 @@ function Backoffice() {
               Envoyer
             </Button>
           </Form>
-          <h4>Supprimer un article</h4>
-          <Form>
+          <h4 style={{ margin: "10px" }}>Supprimer un article</h4>
+          <Form style={{ margin: "20px 0 20px 0" }}>
             <Form.Group>
               <Form.Label>ID</Form.Label>
               <Form.Control
@@ -112,8 +112,8 @@ function Backoffice() {
           </Form>
         </Col>
         <Col md="4" xs="12" className="text-light">
-          <h4>Créer un article</h4>
-          <Form>
+          <h4 style={{ margin: "10px" }}>Créer un article</h4>
+          <Form style={{ margin: "20px 0 20px 0" }}>
             <Form.Group>
               <Form.Label>Titre</Form.Label>
               <Form.Control

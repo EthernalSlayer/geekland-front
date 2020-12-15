@@ -15,16 +15,24 @@ function Articles() {
   }, []);
 
   return (
-    <Container fluid as="main">
+    <Container className="bg-secondary" fluid as="main">
       <Row className="justify-content-center">
-        <Col className="text-center">
-          <h1>Articles</h1>
+        <Col className="text-center text-light">
+          <h1 style={{ margin: "10px", textShadow: "1px 1px 2px black" }}>
+            Articles
+          </h1>
         </Col>
       </Row>
       <Row className="justify-content-center">
         {articles.map((article, index) => (
-          <Col key={index} md="4" xs="12">
-            <Card style={{ width: "18rem" }}>
+          <Col key={index} md="3" xs="12">
+            <Card
+              className="bg-dark"
+              style={{
+                margin: "20px 0 20px 0",
+                boxShadow: "0 0 5px 4px rgba(0, 0, 0, 0.5)",
+              }}
+            >
               <Card.Img
                 variant="top"
                 src={
@@ -34,12 +42,14 @@ function Articles() {
                 }
               />
               <Card.Body>
-                <Card.Title>{article.title}</Card.Title>
+                <Card.Title className="text-light">{article.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                   {article.plateforme}{" "}
                   <small className="text-muted">{`${article.rate}/20`}</small>
                 </Card.Subtitle>
-                <Card.Text>{article.description}</Card.Text>
+                <Card.Text className="text-light">
+                  {article.description}
+                </Card.Text>
                 <Card.Text className="text-success">
                   {article.good_point}
                 </Card.Text>
