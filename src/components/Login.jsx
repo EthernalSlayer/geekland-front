@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 
 function Login(props) {
+  const [pseudo, setPseudo] = useState("");
+  const [password, setPassword] = useState("");
+
+  const pseudoChange = (e) => {
+    setPseudo(e.target.value);
+  };
+
+  const passwordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.setAdmin(true);
+    const data = {
+      pseudo: pseudo,
+      password: password,
+    };
+    axios
+      .post("http://localhost:4000/user/login", data)
+      .then((response) => response.data)
+      .then((data) => {
+        props.setAdmin(data.admin);
+        let token = data.access_token;
+        localStorage.setItem("access_token", token);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -23,12 +47,22 @@ function Login(props) {
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label className="text-light">Pseudo</Form.Label>
-            <Form.Control type="email" placeholder="Enter your pseudo" />
+            <Form.Control
+              type="email"
+              placeholder="Entrer votre pseudo"
+              value={pseudo}
+              onChange={pseudoChange}
+            />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label className="text-light">Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              type="password"
+              placeholder="Entrer votre mot de passe"
+              value={password}
+              onChange={passwordChange}
+            />
           </Form.Group>
           <Button variant="primary" type="submit" onClick={handleSubmit}>
             Submit
