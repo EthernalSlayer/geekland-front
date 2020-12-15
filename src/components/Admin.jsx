@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 
 import Login from "./Login";
+import Backoffice from "./Backoffice";
 
 function Admin() {
   const [admin, setAdmin] = useState(false);
 
-  return admin ? (
-    <h1>Bonjour administrateur</h1>
-  ) : (
-    <Login setAdmin={setAdmin} />
-  );
+  return admin ? <Backoffice /> : <Login setAdmin={setAdmin} />;
 }
 
 export default Admin;
