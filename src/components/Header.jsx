@@ -4,7 +4,13 @@ import { Navbar, Nav } from "react-bootstrap";
 function Header() {
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="md" as="header">
+      <Navbar
+        bg="dark"
+        variant="dark"
+        expand="md"
+        as="header"
+        style={{ boxShadow: "0 0 5px 4px rgba(0, 0, 0, 0.5)" }}
+      >
         <Navbar.Brand href="/">GAMELAND</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

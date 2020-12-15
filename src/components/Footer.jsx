@@ -6,7 +6,12 @@ import { FaReact } from "react-icons/fa";
 
 function Footer() {
   return (
-    <Container className="bg-dark" fluid as="footer">
+    <Container
+      className="bg-dark"
+      fluid
+      as="footer"
+      style={{ boxShadow: "0 0 5px 4px rgba(0, 0, 0, 0.5)" }}
+    >
       <Row>
         <Col md="6" xs="12" className="text-light text-center">
           <h4>Retrouvez Moi</h4>
