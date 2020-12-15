@@ -14,7 +14,7 @@ function Footer() {
             href="https://github.com/EthernalSlayer"
             title="mon compte github"
             target="_blank"
-            rel="noopener noreferer"
+            rel="noopener noreferrer"
             className="text-light"
             style={{ textDecoration: "none" }}
           >
@@ -26,12 +26,13 @@ function Footer() {
             href="https://www.linkedin.com/in/guillaume-bento-aires-7623071a3"
             title="mon compte linkedin"
             target="_blank"
-            rel="noopener noreferer"
+            rel="noopener noreferrer"
             className="text-light"
             style={{ textDecoration: "none" }}
           >
             <p style={{ padding: 0, margin: 0 }}>
-              <ImGithub style={{ marginBottom: "5px" }} /> Guillaume BENTO AIRES
+              <ImLinkedin style={{ marginBottom: "5px" }} /> Guillaume BENTO
+              AIRES
             </p>
           </a>
         </Col>
