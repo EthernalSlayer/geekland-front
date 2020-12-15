@@ -40,6 +40,7 @@ function Articles() {
                     ? `http://localhost:4000/${article.image}`
                     : placeholder
                 }
+                style={{ height: "400px" }}
               />
               <Card.Body>
                 <Card.Title className="text-light">{article.title}</Card.Title>
