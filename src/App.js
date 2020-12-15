@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Articles from "./components/Articles";
+import Admin from "./components/Admin";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router basename="/">
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/articles" component={Articles} />
+        <Route path="/admin" component={Admin} />
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
 
